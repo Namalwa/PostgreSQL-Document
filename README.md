@@ -7,13 +7,13 @@
  Suppose you have two tables: students and courses. You want to retrieve the student name and courses details for each student:
 
   **students table**
-  ![students data](students.png)
+  ![students data](images/students.png)
   **courses table**
- ![courses data](courses.png)
+ ![courses data](images/courses.png)
 
  To get the student name along with course details, you can use:
 
- ![inner join query](query.png)
+ ![inner join query](images/query.png)
 
  **Explanation of the Query**
  
@@ -23,53 +23,53 @@
 
  **Final result:**
 
- ![inner join result](result.png)
+ ![inner join result](images/result.png)
 
 
 ### Left Join
 The LEFT JOIN keyword selects ALL records from the "left" table, and the matching records from the "right" table. The result is 0 records from the right side if there is no match.
 
 **students**
-![left join students data](leftstudent.png)
+![left join students data](images/leftstudent.png)
 **courses**
-![courses data](courses.png)
+![courses data](images/courses.png)
 
 Now, we want to join these two tables so that we can see all students and their corresponding courses, if available. We'll use a left join to do this:
 
-![left join query](leftquery.png)
+![left join query](images/leftquery.png)
 **Final result**
-![left join result](leftresult.png)
+![left join result](images/leftresult.png)
 
 ### Right join
 
 The RIGHT JOIN keyword selects ALL records from the "right" table, and the matching records from the "left" table. The result is 0 records from the left side if there is no match.
 
 **students**
-![left join students data](leftstudent.png)
+![left join students data](images/leftstudent.png)
 **courses**
-![courses data](courses.png)
+![courses data](images/courses.png)
 
-![right join query](rightquery.png)
+![right join query](images/rightquery.png)
  **Final result**
 
 The RIGHT JOIN returns all records from the courses table.
 Since there are no courses corresponding to courseid 450 in the courses table, the studentname, emailaddress, and studentid fields return NULL for that row.
 
-![right join result](rightresult.png)
+![right join result](images/rightresult.png)
 
 ### Full Join
 
 The FULL JOIN keyword selects ALL records from both tables, even if there is not a match. For rows with a match the values from both tables are available, if there is not a match the empty fields will get the value NULL.
 
 **students**
-![left join students data](leftstudent.png)
+![left join students data](images/leftstudent.png)
 **courses**
-![courses data](courses.png)
+![courses data](images/courses.png)
 
-![full join query](fulljoin.png)
+![full join query](images/fulljoin.png)
 
 **Final result**
-![full join result](fulljoinresult.png)
+![full join result](images/fulljoinresult.png)
 
 
 
