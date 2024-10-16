@@ -66,6 +66,7 @@ The FULL JOIN keyword selects ALL records from both tables, even if there is not
 **courses**
 ![courses data](images/courses.png)
 
+**Full join Query**
 ![full join query](images/fulljoin.png)
 
 **Final result**
@@ -73,9 +74,91 @@ The FULL JOIN keyword selects ALL records from both tables, even if there is not
 
 
 
+### ACID properties
+#### PostgreSQL transaction
+*What is a database transaction?*
+
+A database transaction is a single unit of work that consists of one or more operations.
+
+**Example**
+
+A bank transfer from one account to another. A complete transaction must ensure a balance between the sender and receiver accounts.
+ This implies that if the sender account transfers X amount, the receiver receives exactly X amount, neither more nor less.
+
+A PostgreSQL transaction is atomic, consistent, isolated, and durable. These properties are often referred to collectively as ACID:
+
+**Atomicity** guarantees that the transaction is completed in an all-or-nothing manner.
+
+**Consistency** ensures that changes to data written to the database are valid and adhere to predefined rules.
+
+**Isolation** determines how the integrity of a transaction is visible to other transactions.
+
+**Durability** ensures that transactions that have been committed are permanently stored in the database.
+
+Sample table
+
+![sample table](images/sampletable.png)
+
+![table data](images/sampledata.png)
+
+![accounts table](images/accountstable.png)
+
+1. **Atomicity**
+
+Atomicity ensures that all parts of a transaction are completed or none are. If you perform a transaction that involves updating multiple accounts, it will either fully succeed or fully fail.
+
+![atomicity](images/atomicity.png)
+
+![atomic balance](images/atomicbalance.png)
+
+2. **Consistency**
+
+Consistency guarantees that transactions bring the database from one valid state to another, maintaining all rules (like the positive_balance constraint).
+
+![consistency](images/consistency.png)
+
+If this transaction results in a negative balance, it will fail and the COMMIT will not go through, ensuring data integrity.
+
+3. **Isolation**
+
+Isolation ensures that concurrent transactions don’t interfere. For example, if two users attempt to read and update Nina's balance simultaneously, one of them will need to wait until the other completes.
 
 
 
+![isolation](images/isolation.png)
+
+**Example: Transaction A:**
+![isolation](images/transaction1.png)
+ **Transaction B:**
+![isolation](images/transaction2.png)
+
+
+**Result of Isolation**
+
+**Transaction A:** After committing, Nina Namalwa's balance is updated from $500 to $200.
+
+**Transaction B:**
+
+ Even if it starts before Transaction A commits, it sees Nina's balance as $500 at the time of the SELECT, not affected by Transaction A’s withdrawal until it commits.
+After both transactions are complete:
+
+Nina Namalwa: $200
+
+Eva Nekesa: $3000
+
+![isolation](images/finalisolation.png)
+
+4.**Durability**
+
+Durability ensures that once a transaction is committed, the data is permanently saved to the database, even if there’s a crash right afterward.
+
+![durability](images/durability.png)
+
+![durability result](images/durabilityresult.png)
+
+Once committed, the change to Eva's balance is durable. Even if the database server crashes immediately afterward, Eva’s new balance will be preserved.
+
+Each of these properties works to ensure that your data remains reliable, accurate, and resilient under various conditions.
 
  
 
