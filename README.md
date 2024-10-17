@@ -7,8 +7,11 @@
  Suppose you have two tables: students and courses. You want to retrieve the student name and courses details for each student:
 
   **students table**
+
   ![students data](images/students.png)
+
   **courses table**
+
  ![courses data](images/courses.png)
 
  To get the student name along with course details, you can use:
@@ -201,11 +204,11 @@ student_name and phone_number depend only on student_id.
 
 These attributes do not depend on the entire composite key {student_id, course}, leading to partial dependencies
 
-Students Table: This table includes details unique to each student, with student_id as the primary key:
+**Students Table:** This table includes details unique to each student, with student_id as the primary key:
 
 ![2NF sample](images/studentsdata2NF.png)
 
-Student_Courses Table: This table captures the relationship between students and courses, using {student_id, course} as the composite primary key:
+**Student_Courses Table:** This table captures the relationship between students and courses, using {student_id, course} as the composite primary key:
 
 ![2NF sample](images/studentscourses2NF.png)
 
@@ -223,22 +226,24 @@ To achieve Third Normal Form (3NF), we need to ensure that all non-key attribute
 
 ![2NF sample](images/studentsdata2NF.png)
 
-Primary Key: student_id
+**Primary Key:** student_id
 
-Non-Key Attributes: student_name, phone_number
+**Non-Key Attributes:** student_name, phone_number
 
 **Analysis for 3NF**
 
 In this table:
 
-student_name and phone_number are directly dependent on student_id.
+**student_name** and phone_number are directly dependent on **student_id.**
 There are no transitive dependencies, as neither student_name nor phone_number depends on any other non-key attribute.
-Result: The students table is in 3NF since all non-key attributes are dependent on the primary key, and there are no transitive dependencies.
+
+**Result:** The students table is in 3NF since all non-key attributes are dependent on the primary key, and there are no transitive dependencies.
 
 ### Boyce Codd Normal Form
 
 To achieve Boyce-Codd Normal Form (BCNF), a database must first satisfy the requirements of Third Normal Form (3NF), and then ensure that every determinant in the table is a candidate key. A determinant is an attribute (or a set of attributes) on which some other attribute is fully functionally dependent.
 
+**Example**
 ![2NF sample](images/BCNF.png)
  
  This table now holds unique combinations of student_id and student_name, allowing you to have multiple names for the same student ID without causing ambiguity.
@@ -247,10 +252,13 @@ To achieve Boyce-Codd Normal Form (BCNF), a database must first satisfy the requ
 
  ### Fourth Normal Form
 
+**students table**
 ![2NF sample](images/student4NF.png)
 
+**phone numbers table**
 ![2NF sample](images/phone.png)
 
+**courses table**
 ![2NF sample](images/courses4NF.png)
 
 **Summary**
@@ -259,8 +267,10 @@ Now we have the following:
 
 **Students Table:** Maintains unique combinations of student_id and student_name.
 
-Phone_Numbers Table: Allows multiple phone numbers for each student, with foreign key references.
-Courses Table: Allows multiple courses for each student, also maintaining foreign key references.
+**Phone_Numbers Table:** Allows multiple phone numbers for each student, with foreign key references.
+
+**Courses Table:** Allows multiple courses for each student, also maintaining foreign key references.
+
 With this structure, each table has no multi-valued dependencies, satisfying the requirements for Fourth Normal Form (4NF). This design ensures data integrity and prevents redundancy, providing a clear and organized database structure.
 
 
