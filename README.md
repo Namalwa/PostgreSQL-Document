@@ -160,7 +160,111 @@ Once committed, the change to Eva's balance is durable. Even if the database ser
 
 Each of these properties works to ensure that your data remains reliable, accurate, and resilient under various conditions.
 
+
+
+### NORMALIZATION
+#### First Normal Form(1NF)
+
+First Normal Form (1NF) in database normalization ensures that a table's structure is organized so that each column contains only atomic (indivisible) values, and each column contains values of a single type. In other words, 1NF eliminates repeating groups and ensures each field contains only one value.
+
+**First Normal Form Rules**
+
+1. Using row order to convey information is not permitted.
+2. Mixing data types within the same column is not permitted.
+3. Having a table without a primary key is not permitted.
+4. Repeating groups are not permitted.
+
+**sample table**
+![1NF sample](images/1NFsample.png)
+
+Each row has atomic values, with no repeating or grouped data within any column.
+The composite primary key (student_id, course, phone_number) ensures that each row is unique and adheres to 1NF.
+
+This setup allows for simple querying, updating, and deleting of data, while preventing duplication within the table. If you need help with further normalization or queries, let me know!
  
+
+ #### Second Normal Form(2NF)
+
+ The initial table structure contains the following columns:
+
+ ![1NF sample](images/1NFsample.png)
+
+ **Primary Key:** {student_id, course} (composite key)
+
+**Non-key Attributes:** student_name, phone_number
+
+The table is already in 1NF, as each column contains only atomic (indivisible) values, and there are no repeating groups.
+
+Partial dependencies occur when a non-key attribute depends on only a part of the primary key. In this case:
+
+student_name and phone_number depend only on student_id.
+
+These attributes do not depend on the entire composite key {student_id, course}, leading to partial dependencies
+
+Students Table: This table includes details unique to each student, with student_id as the primary key:
+
+![2NF sample](images/studentsdata2NF.png)
+
+Student_Courses Table: This table captures the relationship between students and courses, using {student_id, course} as the composite primary key:
+
+![2NF sample](images/studentscourses2NF.png)
+
+**Result**
+
+After restructuring, the tables are now in 2NF:
+
+**Students Table:** Contains only data fully dependent on student_id.
+Student_Courses Table: Represents the many-to-many relationship between students and courses, with no partial dependencies.
+
+
+### Third Normal Form(3NF)
+
+To achieve Third Normal Form (3NF), we need to ensure that all non-key attributes are not only fully dependent on the primary key (2NF) but also that there are no transitive dependencies meaning no non-key attribute depends on another non-key attribute.
+
+![2NF sample](images/studentsdata2NF.png)
+
+Primary Key: student_id
+
+Non-Key Attributes: student_name, phone_number
+
+**Analysis for 3NF**
+
+In this table:
+
+student_name and phone_number are directly dependent on student_id.
+There are no transitive dependencies, as neither student_name nor phone_number depends on any other non-key attribute.
+Result: The students table is in 3NF since all non-key attributes are dependent on the primary key, and there are no transitive dependencies.
+
+### Boyce Codd Normal Form
+
+To achieve Boyce-Codd Normal Form (BCNF), a database must first satisfy the requirements of Third Normal Form (3NF), and then ensure that every determinant in the table is a candidate key. A determinant is an attribute (or a set of attributes) on which some other attribute is fully functionally dependent.
+
+![2NF sample](images/BCNF.png)
+ 
+ This table now holds unique combinations of student_id and student_name, allowing you to have multiple names for the same student ID without causing ambiguity.
+
+ By restructuring the original Students Table, we eliminate partial dependencies, ensuring that all determinants in the tables are candidate keys.
+
+ ### Fourth Normal Form
+
+![2NF sample](images/student4NF.png)
+
+![2NF sample](images/phone.png)
+
+![2NF sample](images/courses4NF.png)
+
+**Summary**
+
+Now we have the following:
+
+**Students Table:** Maintains unique combinations of student_id and student_name.
+
+Phone_Numbers Table: Allows multiple phone numbers for each student, with foreign key references.
+Courses Table: Allows multiple courses for each student, also maintaining foreign key references.
+With this structure, each table has no multi-valued dependencies, satisfying the requirements for Fourth Normal Form (4NF). This design ensures data integrity and prevents redundancy, providing a clear and organized database structure.
+
+
+
 
 
 
