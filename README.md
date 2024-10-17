@@ -34,12 +34,14 @@ The LEFT JOIN keyword selects ALL records from the "left" table, and the matchin
 
 **students**
 ![left join students data](images/leftstudent.png)
+
 **courses**
 ![courses data](images/courses.png)
 
 Now, we want to join these two tables so that we can see all students and their corresponding courses, if available. We'll use a left join to do this:
 
 ![left join query](images/leftquery.png)
+
 **Final result**
 ![left join result](images/leftresult.png)
 
@@ -49,6 +51,7 @@ The RIGHT JOIN keyword selects ALL records from the "right" table, and the match
 
 **students**
 ![left join students data](images/leftstudent.png)
+
 **courses**
 ![courses data](images/courses.png)
 
@@ -66,6 +69,7 @@ The FULL JOIN keyword selects ALL records from both tables, even if there is not
 
 **students**
 ![left join students data](images/leftstudent.png)
+
 **courses**
 ![courses data](images/courses.png)
 
@@ -132,6 +136,7 @@ Isolation ensures that concurrent transactions don’t interfere. For example, i
 
 **Example: Transaction A:**
 ![isolation](images/transaction1.png)
+
  **Transaction B:**
 ![isolation](images/transaction2.png)
 
