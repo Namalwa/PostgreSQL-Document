@@ -36,6 +36,7 @@ The LEFT JOIN keyword selects ALL records from the "left" table, and the matchin
 ![left join students data](images/leftstudent.png)
 
 **courses**
+
 ![courses data](images/courses.png)
 
 Now, we want to join these two tables so that we can see all students and their corresponding courses, if available. We'll use a left join to do this:
@@ -43,6 +44,7 @@ Now, we want to join these two tables so that we can see all students and their 
 ![left join query](images/leftquery.png)
 
 **Final result**
+
 ![left join result](images/leftresult.png)
 
 ### Right join
