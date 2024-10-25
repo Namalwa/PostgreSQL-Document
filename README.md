@@ -52,12 +52,15 @@ Now, we want to join these two tables so that we can see all students and their 
 The RIGHT JOIN keyword selects ALL records from the "right" table, and the matching records from the "left" table. The result is 0 records from the left side if there is no match.
 
 **students**
+
 ![left join students data](images/leftstudent.png)
 
 **courses**
+
 ![courses data](images/courses.png)
 
 ![right join query](images/rightquery.png)
+
  **Final result**
 
 The RIGHT JOIN returns all records from the courses table.
@@ -70,15 +73,19 @@ Since there are no courses corresponding to courseid 450 in the courses table, t
 The FULL JOIN keyword selects ALL records from both tables, even if there is not a match. For rows with a match the values from both tables are available, if there is not a match the empty fields will get the value NULL.
 
 **students**
+
 ![left join students data](images/leftstudent.png)
 
 **courses**
+
 ![courses data](images/courses.png)
 
 **Full join Query**
+
 ![full join query](images/fulljoin.png)
 
 **Final result**
+
 ![full join result](images/fulljoinresult.png)
 
 
@@ -137,9 +144,11 @@ Isolation ensures that concurrent transactions don’t interfere. For example, i
 ![isolation](images/isolation.png)
 
 **Example: Transaction A:**
+
 ![isolation](images/transaction1.png)
 
  **Transaction B:**
+
 ![isolation](images/transaction2.png)
 
 
@@ -185,6 +194,7 @@ First Normal Form (1NF) in database normalization ensures that a table's structu
 4. Repeating groups are not permitted.
 
 **sample table**
+
 ![1NF sample](images/1NFsample.png)
 
 Each row has atomic values, with no repeating or grouped data within any column.
@@ -251,6 +261,7 @@ There are no transitive dependencies, as neither student_name nor phone_number d
 To achieve Boyce-Codd Normal Form (BCNF), a database must first satisfy the requirements of Third Normal Form (3NF), and then ensure that every determinant in the table is a candidate key. A determinant is an attribute (or a set of attributes) on which some other attribute is fully functionally dependent.
 
 **Example**
+
 ![2NF sample](images/BCNF.png)
  
  This table now holds unique combinations of student_id and student_name, allowing you to have multiple names for the same student ID without causing ambiguity.
@@ -260,12 +271,15 @@ To achieve Boyce-Codd Normal Form (BCNF), a database must first satisfy the requ
  ### Fourth Normal Form
 
 **students table**
+
 ![2NF sample](images/student4NF.png)
 
 **phone numbers table**
+
 ![2NF sample](images/phone.png)
 
 **courses table**
+
 ![2NF sample](images/courses4NF.png)
 
 **Summary**
